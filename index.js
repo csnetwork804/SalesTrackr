@@ -32,4 +32,21 @@ client.on('interactionCreate', async interaction => {
     }
 });
 
+client.on('messageCreate', (message) => {
+    if (message.author.bot) return;
+
+    const args = message.content.trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+
+    if (command === '!ping') {
+        message.reply('🏓 Pong! SalesTrackr is active.');
+    }
+
+    if (command === '!help') {
+        message.reply('📋 Available Commands: !ping, !help, !report');
+    }
+
+    // You can add more commands here like !report, !status, etc.
+});
+
 client.login(process.env.DISCORD_TOKEN);
